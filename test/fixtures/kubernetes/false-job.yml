@@ -1,0 +1,19 @@
+---
+apiVersion: extensions/v1beta1
+kind: Job
+metadata:
+  name: "false"
+spec:
+  completions: 5
+  parallelism: 2
+  template:
+    metadata:
+      labels:
+        app: "false"
+    spec:
+      containers:
+      - name: "true"
+        image: alpine:3.4
+        command:
+          - /bin/false
+      restartPolicy: Never

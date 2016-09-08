@@ -1,0 +1,7 @@
+FROM golang:1.7-alpine
+MAINTAINER Will Farrington <wcfarrington@gmail.com> (@wfarr)
+
+ENV BUILD_PACKAGES="git"
+
+RUN apk --update --upgrade add --virtual build-dependencies $BUILD_PACKAGES
+RUN go get github.com/constabulary/gb/...
