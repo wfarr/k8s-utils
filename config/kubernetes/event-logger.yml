@@ -1,0 +1,22 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pods-event-logger
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pods-event-logger
+    spec:
+      containers:
+      - name: event-logger
+        image: dubs/k8s-utils:latest
+        command:
+          - event-logger
+        args:
+          - "-api-server=https://kubernetes:443"
+          - "-api-version=v1"
+          - "-in-cluster"
+          - "-resources=pods"
